@@ -1,4 +1,3 @@
-import type { StaticImageData } from 'next/image'
 import { z } from 'zod'
 
 /**
@@ -10,21 +9,6 @@ import { z } from 'zod'
 /** A string translated into every supported locale. */
 const i18n = () => z.object({ pt: z.string().min(1), en: z.string().min(1) })
 export type I18nString = z.infer<ReturnType<typeof i18n>>
-
-export const projectSchema = z.object({
-  slug: z.string().min(1),
-  name: z.string().min(1),
-  /** GitHub repo name only (no owner). Used for links and live metadata. */
-  repo: z.string().min(1),
-  tags: z.array(z.string().min(1)).min(1),
-  order: z.number().int(),
-  /** Optional cover image, imported statically for `next/image` optimisation. */
-  cover: z.custom<StaticImageData>().optional(),
-  summary: i18n(),
-  problem: i18n(),
-  did: i18n(),
-})
-export type Project = z.infer<typeof projectSchema>
 
 /** One row of the career/education timeline. */
 export const journeyEntrySchema = z.object({

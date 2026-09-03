@@ -1,24 +1,32 @@
 import type { Locale } from './config'
 
 /**
- * UI chrome only — section labels, buttons, static page copy, error pages.
+ * UI chrome only: section labels, buttons, static page copy, error pages.
  * Portfolio *records* (projects, journey) live in `src/content/` as validated,
  * bilingual data. See `src/content/schema.ts`.
  */
 export type Dictionary = {
   role: string
   location: string
-  nav: { projects: string; stack: string; journey: string; principles: string }
+  nav: {
+    repos: string
+    stack: string
+    journey: string
+    principles: string
+    github: string
+  }
   intro: string[]
   contact: { text: string; cta: string }
   ui: {
-    viewRepo: string
     allRepos: string
     now: string
     toggleTheme: string
     toggleLang: string
     langLabel: string
-    projectsSoon: string
+    updated: string
+    contributions: string
+    less: string
+    more: string
   }
   stack: { name: string; line: string }[]
   principles: { n: string; title: string; text: string }[]
@@ -38,28 +46,31 @@ const pt: Dictionary = {
   role: 'Full Stack / ML Engineer',
   location: 'Sorocaba, SP · BR',
   nav: {
-    projects: 'Projetos',
+    repos: 'Repositórios recentes',
     stack: 'Stack',
     journey: 'Trajetória',
     principles: 'Princípios',
+    github: 'Atividade no GitHub',
   },
   intro: [
-    'Sou João Claudio Prestes, desenvolvedor de software com foco em Full Stack e Machine Learning. Nos últimos dois anos, na TV TEM, construí aplicações web em produção e pipelines de dados; mais recentemente, entrei na [@Apter](https://apter.com.br) para trabalhar com Python, automação e análise de dados.',
-    'Fora do trabalho, estudo machine learning e arquitetura de sistemas. Gosto de entender como as coisas funcionam e de transformar esse conhecimento em soluções práticas.',
-    'Ainda estou construindo minha trajetória. **Aqui você pode conhecer um pouco do que já construí e do que estou aprendendo pelo caminho.**',
+    'Sou João Claudio Prestes e trabalho com desenvolvimento de software, entre Full Stack e Machine Learning. Nos últimos dois anos, na [@TV TEM](https://redeglobo.globo.com/sp/tvtem/), **afiliada Globo**, coloquei aplicações web em produção e ajudei a construir os pipelines de dados da emissora. Hoje estou na [@Apter](https://apter.com.br), trabalhando com Python, automação e análise de dados.',
+    'Fora do trabalho, dedico meu tempo a estudar machine learning e arquitetura de sistemas. Tenho interesse real em entender como as coisas funcionam por dentro e em aplicar isso na prática.',
+    'Ainda estou no início da carreira. **Nesta página reúno um pouco do que já construí e do que venho aprendendo pelo caminho.**',
   ],
   contact: {
     text: 'Aberto a oportunidades, colaborações e boas conversas.',
     cta: 'Manda um e-mail',
   },
   ui: {
-    viewRepo: 'Ver no GitHub',
     allRepos: 'Todos os repositórios',
     now: 'Atual',
     toggleTheme: 'Alternar tema',
     toggleLang: 'Mudar idioma',
     langLabel: 'EN',
-    projectsSoon: 'Em breve — seção em construção.',
+    updated: 'atualizado em',
+    contributions: 'contribuições em',
+    less: 'Menos',
+    more: 'Mais',
   },
   stack: [
     {
@@ -117,28 +128,31 @@ const en: Dictionary = {
   role: 'Full Stack / ML Engineer',
   location: 'Sorocaba, SP · BR',
   nav: {
-    projects: 'Projects',
+    repos: 'Recent repositories',
     stack: 'Stack',
     journey: 'Journey',
     principles: 'Principles',
+    github: 'GitHub Activity',
   },
   intro: [
-    "I'm João Claudio Prestes, a software developer focused on Full Stack and Machine Learning. Over the last two years at TV TEM I built production web apps and data pipelines; more recently, I joined [@Apter](https://apter.com.br) to work with Python, automation, and data analysis.",
-    'Outside work, I study machine learning and systems architecture. I like understanding how things work and turning that knowledge into practical solutions.',
-    "I'm still building my path. **Here you can get a sense of what I've built so far and what I'm learning along the way.**",
+    "I'm João Claudio Prestes and I work in software development, between Full Stack and Machine Learning. Over the last two years at [@TV TEM](https://redeglobo.globo.com/sp/tvtem/), a **Globo affiliate**, I shipped web applications to production and helped build the broadcaster's data pipelines. I'm now at [@Apter](https://apter.com.br), working with Python, automation, and data analysis.",
+    'Outside work, I spend my time studying machine learning and systems architecture. I have a real interest in understanding how things work underneath and in putting that into practice.',
+    "I'm still early in my career. **This page brings together some of what I've built and what I've been learning along the way.**",
   ],
   contact: {
     text: 'Open to opportunities, collaborations, and good conversations.',
     cta: 'Send me an email',
   },
   ui: {
-    viewRepo: 'View on GitHub',
     allRepos: 'All repositories',
     now: 'Now',
     toggleTheme: 'Toggle theme',
     toggleLang: 'Switch language',
     langLabel: 'PT',
-    projectsSoon: 'Coming soon — section under construction.',
+    updated: 'updated',
+    contributions: 'contributions in',
+    less: 'Less',
+    more: 'More',
   },
   stack: [
     {
