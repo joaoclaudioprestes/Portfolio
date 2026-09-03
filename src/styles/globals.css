@@ -1,0 +1,26 @@
+/*
+  Entrada global de estilos. Importa Tailwind, animações, o preset shadcn e os
+  arquivos de tema do projeto (variáveis de cor em style.css, mapeamento de
+  tokens em theme.css).
+*/
+
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "./style.css";
+@import "./theme.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+}
