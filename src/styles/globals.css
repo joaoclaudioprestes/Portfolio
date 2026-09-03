@@ -1,7 +1,5 @@
 /*
-  Entrada global de estilos. Importa Tailwind, animações, o preset shadcn e os
-  arquivos de tema do projeto (variáveis de cor em style.css, mapeamento de
-  tokens em theme.css).
+  Global styles for the application. This file imports Tailwind CSS, custom animations, and additional stylesheets for consistent theming and styling across the app.
 */
 
 @import "tailwindcss";
