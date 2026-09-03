@@ -9,7 +9,7 @@ export function LanguageToggle() {
   return (
     <Button
       variant="outline"
-      size="sm"
+      size="icon"
       aria-label={t.ui.toggleLang}
       onClick={toggleLocale}
       className="font-mono text-[11.5px] tracking-[0.08em]"
