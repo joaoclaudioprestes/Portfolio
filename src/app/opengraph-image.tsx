@@ -35,7 +35,7 @@ export default function Image() {
           maxWidth: 900,
         }}
       >
-        {site.description}
+        {site.description.pt}
       </div>
     </div>,
     { ...size }

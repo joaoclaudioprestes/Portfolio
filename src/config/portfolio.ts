@@ -11,8 +11,8 @@ const GITHUB_USER = env.NEXT_PUBLIC_GITHUB_USER
 
 export const profile = {
   name: env.NEXT_PUBLIC_PROFILE_NAME,
-  /** Used only in static metadata (SEO). The displayed version comes from the dictionary. */
-  role: env.NEXT_PUBLIC_PROFILE_ROLE,
+  /** Short label for the page title (SEO). The header subtitle comes from the dictionary. */
+  role: 'Software Engineer',
   links: {
     email: env.NEXT_PUBLIC_EMAIL,
     github: `https://github.com/${GITHUB_USER}`,

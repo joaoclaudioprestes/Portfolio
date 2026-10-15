@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 import { Providers } from './providers'
 
 export {
-  siteMetadata as metadata,
+  generateSiteMetadata as generateMetadata,
   siteViewport as viewport,
 } from '@/config/site'
 

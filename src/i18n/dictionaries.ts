@@ -43,7 +43,7 @@ export type Dictionary = {
 }
 
 const pt: Dictionary = {
-  role: 'Full Stack / ML Engineer',
+  role: 'Software Engineer, Backend & IA aplicada',
   location: 'Sorocaba, SP · BR',
   nav: {
     repos: 'Repositórios recentes',
@@ -125,7 +125,7 @@ const pt: Dictionary = {
 }
 
 const en: Dictionary = {
-  role: 'Full Stack / ML Engineer',
+  role: 'Software Engineer, Backend & Applied AI',
   location: 'Sorocaba, SP · BR',
   nav: {
     repos: 'Recent repositories',

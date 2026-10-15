@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from 'next'
+import type { Locale } from '@/i18n/config'
+import { getLocale } from '@/i18n/server'
 import { env } from '@/lib/env/client'
 import { profile } from './portfolio'
 
@@ -12,21 +14,21 @@ export const site = {
   name: profile.name,
   role: profile.role,
   title: `${profile.name} · ${profile.role}`,
-  description:
-    'Desenvolvedor de software com foco em Full Stack e Machine Learning. Na Apter, desenvolvo soluções em Python para automação, análise de dados e inteligência artificial. Fora do trabalho, machine learning e arquitetura de sistemas.',
-  locale: 'pt_BR',
+  description: {
+    pt: 'Software Engineer focado em backend e IA aplicada. Python, Java e TypeScript em produção; pipelines de dados com Airflow, dbt e BigQuery.',
+    en: 'Software Engineer focused on backend and applied AI. Python, Java and TypeScript in production; data pipelines with Airflow, dbt and BigQuery.',
+  },
+  ogLocale: { pt: 'pt_BR', en: 'en_US' },
   themeColor: { light: '#ffffff', dark: '#242424' },
   keywords: [
     'João Prestes',
     'João Claudio Prestes',
-    'desenvolvedor de software',
-    'full stack',
-    'machine learning',
-    'engenheiro de software',
-    'Next.js',
-    'React',
+    'software engineer',
+    'backend',
+    'IA aplicada',
+    'Python',
+    'Java',
     'TypeScript',
-    'Node.js',
     'Apter',
     'portfólio',
     'Sorocaba',
@@ -34,14 +36,18 @@ export const site = {
   links: profile.links,
 } as const
 
-/** App Router `metadata` object. Re-exported by the root layout. */
-export const siteMetadata: Metadata = {
+/** App Router `generateMetadata`. Re-exported by the root layout; description follows the locale cookie. */
+export async function generateSiteMetadata(): Promise<Metadata> {
+  return buildMetadata(await getLocale())
+}
+
+const buildMetadata = (locale: Locale): Metadata => ({
   metadataBase: new URL(site.url),
   title: {
     default: site.title,
     template: `%s · ${site.name}`,
   },
-  description: site.description,
+  description: site.description[locale],
   applicationName: site.name,
   keywords: [...site.keywords],
   authors: [{ name: site.name, url: site.links.github }],
@@ -52,16 +58,16 @@ export const siteMetadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: site.locale,
+    locale: site.ogLocale[locale],
     url: site.url,
     siteName: site.name,
     title: site.title,
-    description: site.description,
+    description: site.description[locale],
   },
   twitter: {
     card: 'summary_large_image',
     title: site.title,
-    description: site.description,
+    description: site.description[locale],
   },
   robots: {
     index: true,
@@ -77,7 +83,7 @@ export const siteMetadata: Metadata = {
   icons: {
     icon: [{ url: '/logo.svg', type: 'image/svg+xml' }],
   },
-}
+})
 
 /** App Router `viewport` object. Re-exported by the root layout. */
 export const siteViewport: Viewport = {

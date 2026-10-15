@@ -90,7 +90,6 @@ Zod at build time — **no fallbacks**, the build fails if one is missing.
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | Canonical production URL (metadataBase, OG, sitemap) |
 | `NEXT_PUBLIC_PROFILE_NAME` | Display name |
-| `NEXT_PUBLIC_PROFILE_ROLE` | Role (static SEO metadata) |
 | `NEXT_PUBLIC_GITHUB_USER` | GitHub username — builds profile + repo links |
 | `NEXT_PUBLIC_EMAIL` | Contact email |
 | `NEXT_PUBLIC_LINKEDIN_URL` | LinkedIn profile URL |

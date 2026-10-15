@@ -8,7 +8,6 @@ export const env = createEnv({
   client: {
     NEXT_PUBLIC_SITE_URL: z.url(),
     NEXT_PUBLIC_PROFILE_NAME: z.string().min(1),
-    NEXT_PUBLIC_PROFILE_ROLE: z.string().min(1),
     NEXT_PUBLIC_GITHUB_USER: z.string().min(1),
     NEXT_PUBLIC_EMAIL: z.email(),
     NEXT_PUBLIC_LINKEDIN_URL: z.url(),
@@ -17,7 +16,6 @@ export const env = createEnv({
   runtimeEnv: {
     NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
     NEXT_PUBLIC_PROFILE_NAME: process.env.NEXT_PUBLIC_PROFILE_NAME,
-    NEXT_PUBLIC_PROFILE_ROLE: process.env.NEXT_PUBLIC_PROFILE_ROLE,
     NEXT_PUBLIC_GITHUB_USER: process.env.NEXT_PUBLIC_GITHUB_USER,
     NEXT_PUBLIC_EMAIL: process.env.NEXT_PUBLIC_EMAIL,
     NEXT_PUBLIC_LINKEDIN_URL: process.env.NEXT_PUBLIC_LINKEDIN_URL,
