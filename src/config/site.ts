@@ -13,7 +13,7 @@ export const site = {
   role: profile.role,
   title: `${profile.name} · ${profile.role}`,
   description:
-    'Desenvolvedor de software com foco em Full Stack e Machine Learning. Na Apter, desenvolvo soluções em Python para automação, análise de dados e inteligência artificial. Fora do trabalho, machine learning e arquitetura de sistemas.',
+    'Engenheiro de software full stack e ML Engineer. Na Apter, atuo em projetos de AI enablement com Python, automação e dados. Fora do trabalho, machine learning e arquitetura de sistemas.',
   locale: 'pt_BR',
   themeColor: { light: '#ffffff', dark: '#242424' },
   keywords: [
@@ -22,6 +22,8 @@ export const site = {
     'desenvolvedor de software',
     'full stack',
     'machine learning',
+    'ML Engineer',
+    'AI enablement',
     'engenheiro de software',
     'Next.js',
     'React',

@@ -12,6 +12,7 @@ export type Dictionary = {
     repos: string
     stack: string
     journey: string
+    education: string
     principles: string
     github: string
   }
@@ -20,6 +21,9 @@ export type Dictionary = {
   ui: {
     allRepos: string
     now: string
+    cv: string
+    latest: string
+    nowDoing: string
     toggleTheme: string
     toggleLang: string
     langLabel: string
@@ -28,7 +32,7 @@ export type Dictionary = {
     less: string
     more: string
   }
-  stack: { name: string; line: string }[]
+  stack: { name: string; items: string[] }[]
   principles: { n: string; title: string; text: string }[]
   errors: {
     unexpected: {
@@ -43,19 +47,19 @@ export type Dictionary = {
 }
 
 const pt: Dictionary = {
-  role: 'Full Stack / ML Engineer',
+  role: 'Engenheiro de Software (Full Stack) · ML Engineer',
   location: 'Sorocaba, SP · BR',
   nav: {
     repos: 'Repositórios recentes',
     stack: 'Stack',
-    journey: 'Trajetória',
+    journey: 'Experiência',
+    education: 'Formação',
     principles: 'Princípios',
     github: 'Atividade no GitHub',
   },
   intro: [
-    'Sou João Claudio Prestes e trabalho com desenvolvimento de software, entre Full Stack e Machine Learning. Nos últimos dois anos, na [@TV TEM](https://redeglobo.globo.com/sp/tvtem/), **afiliada Globo**, coloquei aplicações web em produção e ajudei a construir os pipelines de dados da emissora. Hoje estou na [@Apter](https://apter.com.br), trabalhando com Python, automação e análise de dados.',
+    'Sou João Claudio Prestes, **engenheiro de software full stack e ML Engineer**. Nos últimos dois anos, na [@TV TEM](https://redeglobo.globo.com/sp/tvtem/), **afiliada Globo**, coloquei aplicações web em produção e construí os pipelines de dados da emissora. Hoje, na [@Apter](https://apter.com.br), atuo em projetos de **AI enablement**, ajudando clientes a colocar IA para funcionar no dia a dia com Python, automação e dados.',
     'Fora do trabalho, dedico meu tempo a estudar machine learning e arquitetura de sistemas. Tenho interesse real em entender como as coisas funcionam por dentro e em aplicar isso na prática.',
-    'Ainda estou no início da carreira. **Nesta página reúno um pouco do que já construí e do que venho aprendendo pelo caminho.**',
   ],
   contact: {
     text: 'Aberto a oportunidades, colaborações e boas conversas.',
@@ -64,6 +68,9 @@ const pt: Dictionary = {
   ui: {
     allRepos: 'Todos os repositórios',
     now: 'Atual',
+    cv: 'Currículo',
+    latest: 'Mais recente',
+    nowDoing: 'Agora: AI enablement na Apter',
     toggleTheme: 'Alternar tema',
     toggleLang: 'Mudar idioma',
     langLabel: 'EN',
@@ -75,19 +82,46 @@ const pt: Dictionary = {
   stack: [
     {
       name: 'Front-end',
-      line: 'TypeScript · React · Next.js · Angular · Vue · Tailwind · Sass',
+      items: [
+        'TypeScript',
+        'React',
+        'Next.js',
+        'Angular',
+        'Vue',
+        'Tailwind',
+        'Sass',
+      ],
     },
     {
       name: 'Back-end',
-      line: 'Node.js · Express · Java · Spring Boot · Kotlin · Python · PHP',
+      items: [
+        'Node.js',
+        'Express',
+        'Java',
+        'Spring Boot',
+        'Kotlin',
+        'Python',
+        'PHP',
+      ],
     },
     {
       name: 'Dados & ML',
-      line: 'PostgreSQL · MongoDB · MySQL · BigQuery · Redis · Kafka · RabbitMQ · Airflow · dbt · TensorFlow',
+      items: [
+        'PostgreSQL',
+        'MongoDB',
+        'MySQL',
+        'BigQuery',
+        'Redis',
+        'Kafka',
+        'RabbitMQ',
+        'Airflow',
+        'dbt',
+        'TensorFlow',
+      ],
     },
     {
       name: 'Infra',
-      line: 'Docker · Kubernetes · GitHub Actions · GCP · Linux · Git',
+      items: ['Docker', 'Kubernetes', 'GitHub Actions', 'GCP', 'Linux', 'Git'],
     },
   ],
   principles: [
@@ -125,19 +159,19 @@ const pt: Dictionary = {
 }
 
 const en: Dictionary = {
-  role: 'Full Stack / ML Engineer',
+  role: 'Software Engineer (Full Stack) · ML Engineer',
   location: 'Sorocaba, SP · BR',
   nav: {
     repos: 'Recent repositories',
     stack: 'Stack',
-    journey: 'Journey',
+    journey: 'Experience',
+    education: 'Education',
     principles: 'Principles',
     github: 'GitHub Activity',
   },
   intro: [
-    "I'm João Claudio Prestes and I work in software development, between Full Stack and Machine Learning. Over the last two years at [@TV TEM](https://redeglobo.globo.com/sp/tvtem/), a **Globo affiliate**, I shipped web applications to production and helped build the broadcaster's data pipelines. I'm now at [@Apter](https://apter.com.br), working with Python, automation, and data analysis.",
+    "I'm João Claudio Prestes, a **full stack software engineer and ML Engineer**. Over the last two years at [@TV TEM](https://redeglobo.globo.com/sp/tvtem/), a **Globo affiliate**, I shipped web applications to production and built the broadcaster's data pipelines. I'm now at [@Apter](https://apter.com.br), working on **AI enablement** projects, helping clients put AI to work day to day with Python, automation, and data.",
     'Outside work, I spend my time studying machine learning and systems architecture. I have a real interest in understanding how things work underneath and in putting that into practice.',
-    "I'm still early in my career. **This page brings together some of what I've built and what I've been learning along the way.**",
   ],
   contact: {
     text: 'Open to opportunities, collaborations, and good conversations.',
@@ -146,6 +180,9 @@ const en: Dictionary = {
   ui: {
     allRepos: 'All repositories',
     now: 'Now',
+    cv: 'Résumé',
+    latest: 'Latest',
+    nowDoing: 'Now: AI enablement at Apter',
     toggleTheme: 'Toggle theme',
     toggleLang: 'Switch language',
     langLabel: 'PT',
@@ -157,19 +194,46 @@ const en: Dictionary = {
   stack: [
     {
       name: 'Frontend',
-      line: 'TypeScript · React · Next.js · Angular · Vue · Tailwind · Sass',
+      items: [
+        'TypeScript',
+        'React',
+        'Next.js',
+        'Angular',
+        'Vue',
+        'Tailwind',
+        'Sass',
+      ],
     },
     {
       name: 'Backend',
-      line: 'Node.js · Express · Java · Spring Boot · Kotlin · Python · PHP',
+      items: [
+        'Node.js',
+        'Express',
+        'Java',
+        'Spring Boot',
+        'Kotlin',
+        'Python',
+        'PHP',
+      ],
     },
     {
       name: 'Data & ML',
-      line: 'PostgreSQL · MongoDB · MySQL · BigQuery · Redis · Kafka · RabbitMQ · Airflow · dbt · TensorFlow',
+      items: [
+        'PostgreSQL',
+        'MongoDB',
+        'MySQL',
+        'BigQuery',
+        'Redis',
+        'Kafka',
+        'RabbitMQ',
+        'Airflow',
+        'dbt',
+        'TensorFlow',
+      ],
     },
     {
       name: 'Infra',
-      line: 'Docker · Kubernetes · GitHub Actions · GCP · Linux · Git',
+      items: ['Docker', 'Kubernetes', 'GitHub Actions', 'GCP', 'Linux', 'Git'],
     },
   ],
   principles: [

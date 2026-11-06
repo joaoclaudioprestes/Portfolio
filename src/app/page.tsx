@@ -14,7 +14,7 @@ export default async function Home() {
   const [locale, dict, repos] = await Promise.all([
     getLocale(),
     getDict(),
-    getRecentRepos(4),
+    getRecentRepos(5),
   ])
   const journey = getJourney(locale)
 
@@ -27,6 +27,7 @@ export default async function Home() {
           label={dict.nav.repos}
           allRepos={dict.ui.allRepos}
           updated={dict.ui.updated}
+          latest={dict.ui.latest}
           locale={locale}
           items={repos}
         />
@@ -34,7 +35,12 @@ export default async function Home() {
         <Journey
           label={dict.nav.journey}
           nowLabel={dict.ui.now}
-          items={journey}
+          items={journey.filter(j => j.kind === 'work')}
+        />
+        <Journey
+          label={dict.nav.education}
+          nowLabel={dict.ui.now}
+          items={journey.filter(j => j.kind === 'education')}
         />
         <Principles label={dict.nav.principles} items={dict.principles} />
         <GithubActivity label={dict.nav.github} ui={dict.ui} />
