@@ -13,10 +13,14 @@ export type I18nString = z.infer<ReturnType<typeof i18n>>
 /** One row of the career/education timeline. */
 export const journeyEntrySchema = z.object({
   order: z.number().int(),
+  /** Work goes under Experience, education under Education. */
+  kind: z.enum(['work', 'education']).default('work'),
   ongoing: z.boolean().default(false),
   range: i18n(),
   role: i18n(),
   company: i18n(),
+  /** Company logo, path under public/ (e.g. '/logos/apter.jpg'). */
+  logo: z.string().startsWith('/').optional(),
   /** City, short form — e.g. "Sorocaba, BR". */
   location: z.string().min(1),
   /** Work arrangement. Shown as "Company · City · Mode" under the role. */

@@ -20,4 +20,6 @@ export const profile = {
     instagram: env.NEXT_PUBLIC_INSTAGRAM_URL,
     allRepos: `https://github.com/${GITHUB_USER}?tab=repositories`,
   },
+  /** Drop the PDF at public/<cv>. The CV link only renders while the file exists. */
+  cv: 'joao-prestes-cv.pdf',
 } as const

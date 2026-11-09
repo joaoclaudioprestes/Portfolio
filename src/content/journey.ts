@@ -8,16 +8,21 @@ export const journey: JourneyEntry[] = [
     range: { pt: '2026 – hoje', en: '2026 – now' },
     role: { pt: 'System Analyst II', en: 'System Analyst II' },
     company: { pt: 'Apter', en: 'Apter' },
+    logo: '/logos/apter.png',
     location: 'Sorocaba, BR',
     mode: 'hybrid',
     description: [
+      {
+        pt: 'Atuo em projetos de AI enablement, ajudando clientes a incorporar inteligência artificial em seus processos e produtos.',
+        en: 'Work on AI enablement projects, helping clients bring artificial intelligence into their processes and products.',
+      },
       {
         pt: 'Desenvolvo e valido soluções em Python para automação, preparação e análise de dados.',
         en: 'Build and validate Python solutions for automation, data preparation, and analysis.',
       },
       {
-        pt: 'Valido estatisticamente bases de dados e apoio aplicações de inteligência artificial.',
-        en: 'Statistically validate datasets and support artificial-intelligence applications.',
+        pt: 'Valido estatisticamente as bases de dados que alimentam as soluções de IA.',
+        en: 'Statistically validate the datasets that feed the AI solutions.',
       },
       {
         pt: 'Atuo como referência técnica da equipe, responsável pela qualidade das entregas e pela revisão de código.',
@@ -31,10 +36,12 @@ export const journey: JourneyEntry[] = [
   }),
   journeyEntrySchema.parse({
     order: 2,
+    kind: 'education',
     ongoing: true,
     range: { pt: '2023 – hoje', en: '2023 – now' },
     role: { pt: 'Ciência da Computação', en: 'Computer Science' },
     company: { pt: 'Universidade Paulista', en: 'Universidade Paulista' },
+    logo: '/logos/unip.jpg',
     location: 'Sorocaba, BR',
     mode: 'onsite',
     description: [
@@ -61,31 +68,7 @@ export const journey: JourneyEntry[] = [
     range: { pt: '2025 – 2026', en: '2025 – 2026' },
     role: { pt: 'Desenvolvedor de Software', en: 'Software Developer' },
     company: { pt: 'TV TEM', en: 'TV TEM' },
-    location: 'Sorocaba, BR',
-    mode: 'onsite',
-    description: [
-      {
-        pt: 'Desenvolvi aplicações web com React, Next.js e PHP, contribuindo em projetos digitais da emissora, incluindo Cidade Limpa e Experiência.',
-        en: 'Developed web applications using React, Next.js, and PHP, contributing to digital projects for the broadcaster, including Cidade Limpa and Experiência.',
-      },
-      {
-        pt: 'Contribuí para o desenvolvimento, manutenção e evolução de aplicações que apoiavam diferentes áreas e requisitos de negócio.',
-        en: 'Contributed to the development, maintenance, and evolution of applications supporting different business areas and requirements.',
-      },
-      {
-        pt: 'Colaborei em projetos de software, implementando novas funcionalidades, corrigindo problemas e melhorando continuamente as aplicações existentes.',
-        en: 'Collaborated across software projects, implementing new features, fixing issues, and continuously improving existing applications.',
-      },
-    ],
-  }),
-  journeyEntrySchema.parse({
-    order: 4,
-    range: { pt: '2024 – 2025', en: '2024 – 2025' },
-    role: {
-      pt: 'Estágio em Engenharia de Software',
-      en: 'Software Engineer Intern',
-    },
-    company: { pt: 'TV TEM', en: 'TV TEM' },
+    logo: '/logos/tvtem.jpg',
     location: 'Sorocaba, BR',
     mode: 'onsite',
     description: [
@@ -112,6 +95,32 @@ export const journey: JourneyEntry[] = [
     ],
   }),
   journeyEntrySchema.parse({
+    order: 4,
+    range: { pt: '2024 – 2025', en: '2024 – 2025' },
+    role: {
+      pt: 'Estágio em Engenharia de Software',
+      en: 'Software Engineer Intern',
+    },
+    company: { pt: 'TV TEM', en: 'TV TEM' },
+    logo: '/logos/tvtem.jpg',
+    location: 'Sorocaba, BR',
+    mode: 'onsite',
+    description: [
+      {
+        pt: 'Desenvolvi aplicações web com React, Next.js e PHP, contribuindo em projetos digitais da emissora, incluindo Cidade Limpa e Experiência.',
+        en: 'Developed web applications using React, Next.js, and PHP, contributing to digital projects for the broadcaster, including Cidade Limpa and Experiência.',
+      },
+      {
+        pt: 'Contribuí para o desenvolvimento, manutenção e evolução de aplicações que apoiavam diferentes áreas e requisitos de negócio.',
+        en: 'Contributed to the development, maintenance, and evolution of applications supporting different business areas and requirements.',
+      },
+      {
+        pt: 'Colaborei em projetos de software, implementando novas funcionalidades, corrigindo problemas e melhorando continuamente as aplicações existentes.',
+        en: 'Collaborated across software projects, implementing new features, fixing issues, and continuously improving existing applications.',
+      },
+    ],
+  }),
+  journeyEntrySchema.parse({
     order: 5,
     range: { pt: '2023 – 2024', en: '2023 – 2024' },
     role: { pt: 'Estágio em TI', en: 'IT Intern' },
@@ -119,6 +128,7 @@ export const journey: JourneyEntry[] = [
       pt: 'Prefeitura de Araçoiaba da Serra',
       en: 'Araçoiaba da Serra City Hall',
     },
+    logo: '/logos/prefeitura.jpg',
     location: 'Araçoiaba da Serra, BR',
     mode: 'onsite',
     description: [
@@ -138,6 +148,7 @@ export const journey: JourneyEntry[] = [
   }),
   journeyEntrySchema.parse({
     order: 6,
+    kind: 'education',
     range: { pt: '2020 – 2022', en: '2020 – 2022' },
     role: {
       pt: 'Técnico em Administração',

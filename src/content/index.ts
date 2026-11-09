@@ -3,14 +3,16 @@ import 'server-only'
 import type { Locale } from '@/i18n/config'
 
 import { journey as rawJourney } from './journey'
-import type { I18nString } from './schema'
+import type { I18nString, JourneyEntry } from './schema'
 
 const pick = <T>(v: { pt: T; en: T }, locale: Locale) => v[locale]
 const resolve = (v: I18nString, locale: Locale) => pick(v, locale)
 
 export type JourneyView = {
+  kind: JourneyEntry['kind']
   ongoing: boolean
   company: string
+  logo: string | undefined
   location: string
   range: string
   role: string
@@ -28,8 +30,10 @@ export function getJourney(locale: Locale): JourneyView[] {
   return [...rawJourney]
     .sort((a, b) => a.order - b.order)
     .map(j => ({
+      kind: j.kind,
       ongoing: j.ongoing,
       company: resolve(j.company, locale),
+      logo: j.logo,
       location: j.location,
       range: resolve(j.range, locale),
       role: resolve(j.role, locale),
