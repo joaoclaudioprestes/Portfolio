@@ -1,55 +1,26 @@
+import Image from 'next/image'
+
 import { Badge } from '@/components/ui/badge'
 import type { JourneyView } from '@/content'
+import { cn } from '@/lib/utils'
 
 import { SectionHeading } from './section-heading'
 
-// ponytail: group consecutive entries at the same company. Multi-role groups
-// render LinkedIn-style — company header + a dotted timeline of roles under it.
-// Single-role groups stay flat (company on the meta line).
-function groupByCompany(items: JourneyView[]): JourneyView[][] {
-  const groups: JourneyView[][] = []
-  for (const item of items) {
-    const last = groups[groups.length - 1]
-    if (last && last[0].company === item.company) last.push(item)
-    else groups.push([item])
-  }
-  return groups
-}
-
-function RoleTitle({
-  role,
-  ongoing,
-  nowLabel,
-}: {
-  role: string
-  ongoing: boolean
-  nowLabel: string
-}) {
+// Company logo. White tile + object-contain so transparent or non-square marks
+// (e.g. a coat of arms) stay legible in dark mode.
+function Logo({ src, className }: { src: string; className?: string }) {
   return (
-    <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-      <span className="font-semibold text-[15.5px] tracking-tight">{role}</span>
-      {ongoing && (
-        <Badge
-          variant="outline"
-          className="border-primary/30 font-mono text-[10px] text-primary uppercase tracking-widest"
-        >
-          {nowLabel}
-        </Badge>
-      )}
-    </div>
+    <Image
+      src={src}
+      alt=""
+      width={40}
+      height={40}
+      className={cn('shrink-0 rounded-sm bg-white object-contain', className)}
+    />
   )
 }
 
-function Bullets({ items }: { items: string[] }) {
-  return (
-    <ul className="mt-1 list-disc space-y-1 pl-4 text-muted-foreground text-sm marker:text-muted-foreground/40">
-      {items.map(d => (
-        <li key={d}>{d}</li>
-      ))}
-    </ul>
-  )
-}
-
+// Résumé rows: date column | role · company (with logo), then all bullets.
 export function Journey({
   label,
   nowLabel,
@@ -63,80 +34,48 @@ export function Journey({
     <section>
       <SectionHeading>{label}</SectionHeading>
 
-      <div className="mt-2 flex flex-col">
-        {groupByCompany(items).map(group => {
-          const head = group[0]
-          const key = `${head.company}-${head.range}`
-
-          if (group.length === 1) {
-            return (
-              <div
-                key={key}
-                className="flex flex-col gap-1 border-border border-b py-4"
-              >
-                <RoleTitle
-                  role={head.role}
-                  ongoing={head.ongoing}
-                  nowLabel={nowLabel}
-                />
-                <span className="text-muted-foreground text-sm">
-                  {head.company}
-                  <span className="text-muted-foreground/70">
-                    {` · ${head.location} · ${head.mode}`}
-                  </span>
+      <ol className="mt-5 flex flex-col gap-6">
+        {items.map(j => (
+          <li
+            key={`${j.company}-${j.range}`}
+            className="grid gap-1 sm:grid-cols-[6.5rem_1fr] sm:gap-4"
+          >
+            <span className="pt-0.5 font-mono text-[11.5px] text-muted-foreground">
+              {j.range}
+            </span>
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                <span className="font-semibold text-[15px] tracking-tight">
+                  {j.role}
                 </span>
-                <span className="font-mono text-muted-foreground text-xs">
-                  {head.range}
+                <span className="text-muted-foreground/60">·</span>
+                <span className="inline-flex items-center gap-1.5 self-center text-[15px] text-muted-foreground">
+                  {j.logo && <Logo src={j.logo} className="size-4.5" />}
+                  {j.company}
                 </span>
-                {head.description && <Bullets items={head.description} />}
-              </div>
-            )
-          }
-
-          return (
-            <div
-              key={key}
-              className="flex flex-col gap-4 border-border border-b py-4"
-            >
-              <div className="flex flex-col gap-0.5">
-                <span className="font-semibold text-[15.5px] tracking-tight">
-                  {head.company}
-                </span>
-                <span className="text-muted-foreground/70 text-sm">
-                  {head.location} · {head.mode}
-                </span>
-              </div>
-
-              <ol className="relative flex flex-col gap-5 pl-5">
-                <span
-                  aria-hidden
-                  className="absolute top-1.5 bottom-1.5 left-0.75 w-px bg-border"
-                />
-                {group.map(j => (
-                  <li
-                    key={`${j.range}-${j.role}`}
-                    className="relative flex flex-col gap-0.5"
+                {j.ongoing && (
+                  <Badge
+                    variant="outline"
+                    className="border-primary/30 font-mono text-[10px] text-primary uppercase tracking-widest"
                   >
-                    <span
-                      aria-hidden
-                      className="absolute top-2 -left-5 size-1.5 rounded-full bg-muted-foreground"
-                    />
-                    <RoleTitle
-                      role={j.role}
-                      ongoing={j.ongoing}
-                      nowLabel={nowLabel}
-                    />
-                    <span className="font-mono text-muted-foreground text-xs">
-                      {j.range}
-                    </span>
-                    {j.description && <Bullets items={j.description} />}
-                  </li>
-                ))}
-              </ol>
+                    {nowLabel}
+                  </Badge>
+                )}
+              </div>
+              <span className="font-mono text-[11px] text-muted-foreground/70">
+                {j.location} · {j.mode}
+              </span>
+              {j.description && (
+                <ul className="mt-2 list-disc space-y-1 pl-4 text-muted-foreground text-sm marker:text-muted-foreground/40">
+                  {j.description.map(d => (
+                    <li key={d}>{d}</li>
+                  ))}
+                </ul>
+              )}
             </div>
-          )
-        })}
-      </div>
+          </li>
+        ))}
+      </ol>
     </section>
   )
 }

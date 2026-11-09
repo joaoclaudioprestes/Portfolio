@@ -1,3 +1,12 @@
+import { existsSync } from 'node:fs'
+import { join } from 'node:path'
+import { Download, Mail, MapPin } from 'lucide-react'
+
+import {
+  GithubIcon,
+  InstagramIcon,
+  LinkedinIcon,
+} from '@/components/ui/brand-icons'
 import { profile } from '@/config/portfolio'
 import type { Dictionary } from '@/i18n/dictionaries'
 
@@ -33,14 +42,47 @@ function rich(text: string) {
   })
 }
 
+const SOCIALS = [
+  { href: links.github, label: 'GitHub', Icon: GithubIcon },
+  { href: links.linkedin, label: 'LinkedIn', Icon: LinkedinIcon },
+  { href: links.instagram, label: 'Instagram', Icon: InstagramIcon },
+] as const
+
+// ponytail: checked at render/build. Missing PDF hides the link instead of 404ing.
+const hasCv = existsSync(join(process.cwd(), 'public', profile.cv))
+
+const meta = 'inline-flex items-center gap-1.5 hover:text-foreground'
+
 export function Intro({ dict }: { dict: Dictionary }) {
   return (
     <section>
-      <h1 className="font-bold text-3xl tracking-tight sm:text-4xl">{name}</h1>
+      <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/5 px-3 py-1 font-mono text-[11.5px] text-primary">
+        <span className="relative flex size-2">
+          <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-60 motion-reduce:animate-none" />
+          <span className="relative inline-flex size-2 rounded-full bg-primary" />
+        </span>
+        {dict.ui.nowDoing}
+      </span>
 
-      <div className="mt-2.5 flex flex-wrap items-center gap-x-3.5 gap-y-2 font-mono text-[13px]">
-        <span className="text-primary">{dict.role}</span>
-        <span className="text-muted-foreground">{dict.location}</span>
+      <h1 className="font-bold text-4xl tracking-tight sm:text-5xl">{name}</h1>
+
+      <p className="mt-2.5 font-mono text-[13px] text-primary">{dict.role}</p>
+
+      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[12.5px] text-muted-foreground">
+        <span className="inline-flex items-center gap-1.5">
+          <MapPin className="size-3.5" aria-hidden />
+          {dict.location}
+        </span>
+        {hasCv && (
+          <a href={`/${profile.cv}`} download className={meta}>
+            <Download className="size-3.5" aria-hidden />
+            {dict.ui.cv}
+          </a>
+        )}
+        <a href={`mailto:${links.email}`} className={meta}>
+          <Mail className="size-3.5" aria-hidden />
+          {links.email}
+        </a>
       </div>
 
       <div className="mt-6 flex flex-col gap-3.5 text-pretty text-muted-foreground">
@@ -49,37 +91,20 @@ export function Intro({ dict }: { dict: Dictionary }) {
         ))}
       </div>
 
-      <nav className="mt-6 flex flex-wrap items-center gap-x-4.5 gap-y-2 font-mono text-[13px]">
-        <a
-          href={`mailto:${links.email}`}
-          className="border-primary border-b pb-0.5 text-foreground hover:opacity-70"
-        >
-          {links.email}
-        </a>
-        <a
-          href={links.github}
-          target="_blank"
-          rel="noopener"
-          className="text-muted-foreground hover:opacity-70"
-        >
-          GitHub
-        </a>
-        <a
-          href={links.linkedin}
-          target="_blank"
-          rel="noopener"
-          className="text-muted-foreground hover:opacity-70"
-        >
-          LinkedIn
-        </a>
-        <a
-          href={links.instagram}
-          target="_blank"
-          rel="noopener"
-          className="text-muted-foreground hover:opacity-70"
-        >
-          Instagram
-        </a>
+      <nav className="mt-6 flex items-center gap-1">
+        {SOCIALS.map(({ href, label, Icon }) => (
+          <a
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noopener"
+            aria-label={label}
+            title={label}
+            className="rounded-md p-2 text-muted-foreground transition-colors first:-ml-2 hover:bg-muted hover:text-foreground"
+          >
+            <Icon className="size-4.5" />
+          </a>
+        ))}
       </nav>
     </section>
   )

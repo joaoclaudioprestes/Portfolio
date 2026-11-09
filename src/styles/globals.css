@@ -22,3 +22,31 @@
     scroll-behavior: smooth;
   }
 }
+
+/* Soft accent glow behind the hero. Pure CSS, follows the theme's --primary. */
+body {
+  background-image: radial-gradient(
+    60rem 28rem at 50% -12rem,
+    color-mix(in oklch, var(--primary) 14%, transparent),
+    transparent
+  );
+  background-repeat: no-repeat;
+}
+
+/* Sections fade up as they scroll in. Progressive: browsers without
+   scroll-driven animations (or reduced motion) just show them. */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    main section {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}

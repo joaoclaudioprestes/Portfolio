@@ -31,27 +31,26 @@ schema at load time — `next build` fails if a field is missing or malformed.
 ```
 src/
 ├── app/                      # App Router — server components, dynamic
-│   ├── page.tsx              # SiteHeader · Intro · ProjectList · Stack · Journey · Principles · Contact
+│   ├── page.tsx              # SiteHeader · Intro · Repos · Stack · Journey (work, education) · Principles · GithubActivity · Contact
 │   ├── layout.tsx            # reads locale cookie, sets <html lang>
 │   ├── opengraph-image.tsx   # generated OG image
 │   ├── robots.ts · sitemap.ts
 │   └── icon.svg              # favicon (logo)
 ├── components/
-│   ├── blocks/               # page sections (server, props-driven)
+│   ├── blocks/               # page sections (server, props-driven); tech-icon.tsx maps tech → logo
 │   ├── layout/               # header, logo, theme + language toggles
-│   └── ui/                   # shadcn primitives (added via CLI, never hand-written)
+│   └── ui/                   # shadcn primitives (added via CLI) + brand-icons.tsx (inline SVG)
 ├── content/
-│   ├── schema.ts             # Zod — projectSchema, journeyEntrySchema, i18n() helper
-│   ├── projects/<slug>.ts    # one file per project + barrel index
-│   ├── journey.ts            # unified roles + education timeline
-│   └── index.ts              # 'server-only' — getProjects(locale), getJourney(locale)
+│   ├── schema.ts             # Zod — journeyEntrySchema, i18n() helper
+│   ├── journey.ts            # roles + education (kind: 'work' | 'education'), optional logo
+│   └── index.ts              # 'server-only' — getJourney(locale)
 ├── i18n/                     # cookie-based locale (pt | en), no localStorage, no flash
 │   ├── config.ts             # locales, COOKIE_NAME, htmlLang
 │   ├── server.ts             # 'server-only' — getLocale(), getDict()
 │   ├── dictionaries.ts       # UI chrome copy only
 │   └── provider.tsx          # client — toggleLocale writes cookie + router.refresh()
 ├── lib/
-│   ├── github.ts             # public REST, getReposMeta() — merges ★ / language into projects
+│   ├── github.ts             # public REST — getRecentRepos(), getContributions()
 │   ├── env/client.ts         # validated NEXT_PUBLIC_* — no fallbacks
 │   └── font.ts · utils.ts
 ├── config/
@@ -60,10 +59,14 @@ src/
 └── styles/                   # Tailwind v4 theme, green accent
 ```
 
-Adding a project = create `src/content/projects/<slug>.ts` and list it in the
-barrel. GitHub stars and primary language are fetched at build time
-(revalidated daily) and merged in; the site degrades gracefully to static
-content if the API fails.
+Repositories come live from the GitHub API (most recently pushed, revalidated
+daily); the newest one gets the featured card. If the API fails the section
+hides itself.
+
+Adding a role or course = add an entry to `src/content/journey.ts`
+(`kind: 'education'` for courses). Company logos go in `public/logos/` and are
+referenced as `logo: '/logos/<file>'`. The CV link appears once
+`public/joao-prestes-cv.pdf` exists.
 
 ---
 

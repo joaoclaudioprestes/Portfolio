@@ -26,6 +26,8 @@ export type Repo = {
   language: string | null
   url: string
   pushedAt: string
+  topics: string[]
+  stars: number
 }
 
 /** The `count` most recently pushed non-fork public repos. */
@@ -43,6 +45,8 @@ export async function getRecentRepos(count: number): Promise<Repo[]> {
       html_url: string
       pushed_at: string
       fork: boolean
+      topics?: string[]
+      stargazers_count: number
     }>
     return d
       .filter(r => !r.fork)
@@ -53,6 +57,8 @@ export async function getRecentRepos(count: number): Promise<Repo[]> {
         language: r.language,
         url: r.html_url,
         pushedAt: r.pushed_at,
+        topics: r.topics ?? [],
+        stars: r.stargazers_count,
       }))
   } catch {
     return []
