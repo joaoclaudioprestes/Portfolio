@@ -19,7 +19,7 @@ function rich(text: string) {
     const key = `${i}-${part}`
     if (part.startsWith('**') && part.endsWith('**')) {
       return (
-        <strong key={key} className="font-medium text-foreground">
+        <strong key={key} className="text-foreground font-medium">
           {part.slice(2, -2)}
         </strong>
       )
@@ -32,7 +32,7 @@ function rich(text: string) {
           href={link[2]}
           target="_blank"
           rel="noopener"
-          className="border-primary border-b pb-0.5 font-medium text-foreground hover:opacity-70"
+          className="border-primary text-foreground border-b pb-0.5 font-medium hover:opacity-70"
         >
           {link[1]}
         </a>
@@ -56,19 +56,19 @@ const meta = 'inline-flex items-center gap-1.5 hover:text-foreground'
 export function Intro({ dict }: { dict: Dictionary }) {
   return (
     <section>
-      <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/5 px-3 py-1 font-mono text-[11.5px] text-primary">
+      <span className="border-primary/25 bg-primary/5 text-primary mb-5 inline-flex items-center gap-2 rounded-full border px-3 py-1 font-mono text-[11.5px]">
         <span className="relative flex size-2">
-          <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-60 motion-reduce:animate-none" />
-          <span className="relative inline-flex size-2 rounded-full bg-primary" />
+          <span className="bg-primary absolute inline-flex size-full animate-ping rounded-full opacity-60 motion-reduce:animate-none" />
+          <span className="bg-primary relative inline-flex size-2 rounded-full" />
         </span>
         {dict.ui.nowDoing}
       </span>
 
-      <h1 className="font-bold text-4xl tracking-tight sm:text-5xl">{name}</h1>
+      <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">{name}</h1>
 
-      <p className="mt-2.5 font-mono text-[13px] text-primary">{dict.role}</p>
+      <p className="text-primary mt-2.5 font-mono text-[13px]">{dict.role}</p>
 
-      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[12.5px] text-muted-foreground">
+      <div className="text-muted-foreground mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[12.5px]">
         <span className="inline-flex items-center gap-1.5">
           <MapPin className="size-3.5" aria-hidden />
           {dict.location}
@@ -85,7 +85,7 @@ export function Intro({ dict }: { dict: Dictionary }) {
         </a>
       </div>
 
-      <div className="mt-6 flex flex-col gap-3.5 text-pretty text-muted-foreground">
+      <div className="text-muted-foreground mt-6 flex flex-col gap-3.5 text-pretty">
         {dict.intro.map(p => (
           <p key={p}>{rich(p)}</p>
         ))}
@@ -100,7 +100,7 @@ export function Intro({ dict }: { dict: Dictionary }) {
             rel="noopener"
             aria-label={label}
             title={label}
-            className="rounded-md p-2 text-muted-foreground transition-colors first:-ml-2 hover:bg-muted hover:text-foreground"
+            className="text-muted-foreground hover:bg-muted hover:text-foreground rounded-md p-2 transition-colors first:-ml-2"
           >
             <Icon className="size-4.5" />
           </a>
