@@ -9,17 +9,17 @@
 
 ## Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | [Next.js 16](https://nextjs.org/) App Router + Turbopack |
-| UI | React 19, [Tailwind CSS v4](https://tailwindcss.com/), [shadcn](https://ui.shadcn.com/) (`base-rhea` / [Base UI](https://base-ui.com/)) |
-| Icons | [lucide-react](https://lucide.dev/) |
-| Themes | [next-themes](https://github.com/pacocoursey/next-themes) |
-| Validation | [Zod](https://zod.dev/) — content records + env |
-| Env | [@t3-oss/env-nextjs](https://env.t3.gg/) |
-| Analytics | [@vercel/analytics](https://vercel.com/analytics) |
-| Linter / Formatter | [Biome](https://biomejs.dev/) |
-| Deploy | [Vercel](https://vercel.com/) |
+| Layer              | Technology                                                                                                                              |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Framework          | [Next.js 16](https://nextjs.org/) App Router + Turbopack                                                                                |
+| UI                 | React 19, [Tailwind CSS v4](https://tailwindcss.com/), [shadcn](https://ui.shadcn.com/) (`base-rhea` / [Base UI](https://base-ui.com/)) |
+| Icons              | [lucide-react](https://lucide.dev/)                                                                                                     |
+| Themes             | [next-themes](https://github.com/pacocoursey/next-themes)                                                                               |
+| Validation         | [Zod](https://zod.dev/) — content records + env                                                                                         |
+| Env                | [@t3-oss/env-nextjs](https://env.t3.gg/)                                                                                                |
+| Analytics          | [@vercel/analytics](https://vercel.com/analytics)                                                                                       |
+| Linter / Formatter | [Biome](https://biomejs.dev/)                                                                                                           |
+| Deploy             | [Vercel](https://vercel.com/)                                                                                                           |
 
 ---
 
@@ -89,16 +89,16 @@ Open [http://localhost:3000](http://localhost:3000).
 All variables are `NEXT_PUBLIC_*` (read in client components) and validated by
 Zod at build time — **no fallbacks**, the build fails if one is missing.
 
-| Variable | Description |
-|---|---|
-| `NEXT_PUBLIC_SITE_URL` | Canonical production URL (metadataBase, OG, sitemap) |
-| `NEXT_PUBLIC_PROFILE_NAME` | Display name |
-| `NEXT_PUBLIC_PROFILE_ROLE` | Role (static SEO metadata) |
-| `NEXT_PUBLIC_GITHUB_USER` | GitHub username — builds profile + repo links |
-| `NEXT_PUBLIC_EMAIL` | Contact email |
-| `NEXT_PUBLIC_LINKEDIN_URL` | LinkedIn profile URL |
-| `NEXT_PUBLIC_INSTAGRAM_URL` | Instagram profile URL |
-| `GITHUB_TOKEN` | *(optional)* raises the GitHub API rate limit at build time |
+| Variable                    | Description                                                 |
+| --------------------------- | ----------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`      | Canonical production URL (metadataBase, OG, sitemap)        |
+| `NEXT_PUBLIC_PROFILE_NAME`  | Display name                                                |
+| `NEXT_PUBLIC_PROFILE_ROLE`  | Role (static SEO metadata)                                  |
+| `NEXT_PUBLIC_GITHUB_USER`   | GitHub username — builds profile + repo links               |
+| `NEXT_PUBLIC_EMAIL`         | Contact email                                               |
+| `NEXT_PUBLIC_LINKEDIN_URL`  | LinkedIn profile URL                                        |
+| `NEXT_PUBLIC_INSTAGRAM_URL` | Instagram profile URL                                       |
+| `GITHUB_TOKEN`              | _(optional)_ raises the GitHub API rate limit at build time |
 
 ---
 

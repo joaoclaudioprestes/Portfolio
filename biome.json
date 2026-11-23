@@ -22,12 +22,12 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
+      "preset": "recommended",
       "a11y": {
         "noSvgWithoutTitle": "off"
       },
       "nursery": {
-        "useSortedClasses": {
+        "useTailwindSortedClasses": {
           "level": "error",
           "fix": "safe"
         }
@@ -38,11 +38,11 @@
     }
   },
   "files": {
-    "includes": [
-      "**",
-      "!node_modules",
-      "!.source",
-      "!src/http"
-    ]
+    "includes": ["**", "!node_modules", "!.source", "!src/http"]
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
   }
 }

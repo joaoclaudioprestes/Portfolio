@@ -52,7 +52,7 @@ export async function GithubActivity({ label, ui, year }: Props) {
         </div>
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-2 font-mono text-[11.5px] text-muted-foreground">
+      <div className="text-muted-foreground mt-4 flex flex-wrap items-center justify-between gap-2 font-mono text-[11.5px]">
         <span>
           {data.total.toLocaleString()} {ui.contributions} {y}
         </span>

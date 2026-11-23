@@ -53,7 +53,7 @@ export function Repos({
           href={profile.links.allRepos}
           target="_blank"
           rel="noopener"
-          className="shrink-0 whitespace-nowrap font-mono text-[11.5px] text-muted-foreground hover:text-foreground"
+          className="text-muted-foreground hover:text-foreground shrink-0 font-mono text-[11.5px] whitespace-nowrap"
         >
           {allRepos} →
         </a>
@@ -69,13 +69,13 @@ export function Repos({
                 target="_blank"
                 rel="noopener"
                 className={cn(
-                  'group relative flex h-full flex-col gap-2 overflow-hidden rounded-xl border border-border bg-card p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5',
+                  'group border-border bg-card hover:border-primary/40 hover:shadow-primary/5 relative flex h-full flex-col gap-2 overflow-hidden rounded-xl border p-4 transition-all hover:-translate-y-0.5 hover:shadow-lg',
                   featured &&
-                    'gap-3 bg-linear-to-br from-primary/10 via-card to-card p-5 sm:p-6'
+                    'from-primary/10 via-card to-card gap-3 bg-linear-to-br p-5 sm:p-6'
                 )}
               >
                 {featured && (
-                  <span className="w-fit rounded-full border border-primary/30 px-2 py-0.5 font-mono text-[10px] text-primary uppercase tracking-widest">
+                  <span className="border-primary/30 text-primary w-fit rounded-full border px-2 py-0.5 font-mono text-[10px] tracking-widest uppercase">
                     {latest}
                   </span>
                 )}
@@ -89,13 +89,13 @@ export function Repos({
                   >
                     {r.name}
                   </span>
-                  <ArrowUpRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
+                  <ArrowUpRight className="text-muted-foreground group-hover:text-primary size-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
 
                 {r.description && (
                   <span
                     className={cn(
-                      'text-pretty text-muted-foreground',
+                      'text-muted-foreground text-pretty',
                       featured ? 'text-[15px]' : 'line-clamp-3 text-sm'
                     )}
                   >
@@ -108,7 +108,7 @@ export function Repos({
                     {r.topics.slice(0, 8).map(t => (
                       <span
                         key={t}
-                        className="rounded-md bg-muted px-2 py-0.5 font-mono text-[11px] text-muted-foreground"
+                        className="bg-muted text-muted-foreground rounded-md px-2 py-0.5 font-mono text-[11px]"
                       >
                         {t}
                       </span>
@@ -116,11 +116,11 @@ export function Repos({
                   </span>
                 )}
 
-                <span className="mt-auto flex flex-wrap items-center gap-x-3 gap-y-1 pt-1 font-mono text-[11px] text-muted-foreground/80">
+                <span className="text-muted-foreground/80 mt-auto flex flex-wrap items-center gap-x-3 gap-y-1 pt-1 font-mono text-[11px]">
                   {r.language && (
                     <span className="inline-flex items-center gap-1.5">
                       <span
-                        className="size-2 rounded-full bg-muted-foreground"
+                        className="bg-muted-foreground size-2 rounded-full"
                         style={
                           LANG_COLOR[r.language]
                             ? { background: LANG_COLOR[r.language] }
